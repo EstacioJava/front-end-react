@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "app": "pnpm dev | start chrome --app=http://localhost:3000",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",

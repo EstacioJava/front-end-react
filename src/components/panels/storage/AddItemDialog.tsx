@@ -84,11 +84,11 @@ export function AddItemDialog (props: AddItemDialogProps) {
                            <SelectItem value="MDF 18mm">MDF 18mm</SelectItem>
                         </SelectGroup>
                         
-                        {/* <SelectGroup>
+                        <SelectGroup>
                            <SelectLabel>Outros</SelectLabel>
                            <SelectItem value="cola_contato_3.6L">Cola contato 3,6 L</SelectItem>
                            <SelectItem value="corredica_light">Corrediça Light</SelectItem>
-                        </SelectGroup> */}
+                        </SelectGroup>
                      </SelectContent>
                   </Select>
                </div>

@@ -26,6 +26,7 @@ import {
 import { DeleteItemAlertDialog } from "./DeleteItemAlertDialog";
 
 export default function StoragePanel() {
+   const [errorOnFetchingStorage, setErrorOnFetchingStorage] = useState(false);
    const [isAddItemDialogOpen, setIsAddItemDialogOpen] = useState(false);
    const [storage, setStorage] = useState([]);
    const [isDatabaseLoading, setIsDatabaseLoading] = useState(false);
@@ -39,18 +40,25 @@ export default function StoragePanel() {
    }, []);
 
    function getStorageItems () {
-      try {
-         fetch('http://localhost:8080/storage', {
-            method: 'GET',
-         }).then(async (response) => {
-            return await response.json();
-         }).then((data) => {
+      fetch('http://localhost:8080/storage', {
+         method: 'GET',
+      }).catch(err => {
+         console.error('[ERROR] Unable to fetch /storage');
+         console.error(err);
+         setErrorOnFetchingStorage(true);
+      }).then((response) => {
+         if (response) {
+            return response.json();
+         }
+      }).then((data) => {
+         if (data) {
             setStorage(data);
-            setIsDatabaseLoading(false);
-         })
-      } catch (err) {
-         console.error('Server not available');
-      }
+            setErrorOnFetchingStorage(false);
+         } else {
+            console.error('[ERROR] No data found when fetching /storage');
+         }
+         setIsDatabaseLoading(false);
+      })
    }
 
    function deleteItem({ id }: { id: string }) {
@@ -109,6 +117,16 @@ export default function StoragePanel() {
                   </TableCell>
                </TableRow>
             </>)
+      } else if (errorOnFetchingStorage) {
+         <TableRow>
+            <TableCell className="font-medium">-</TableCell>
+            <TableCell className="font-medium">-</TableCell>
+            <TableCell className="font-medium">-</TableCell>
+            <TableCell className="font-medium">-</TableCell>
+            <TableCell className="font-medium">-</TableCell>
+            <TableCell className="font-medium">-</TableCell>
+            <TableCell className="font-medium">-</TableCell>
+         </TableRow>
       } else {
          return storage.map((item: Item) => {
             return (
@@ -142,9 +160,9 @@ export default function StoragePanel() {
          <div className="flex flex-row justify-between mb-4">
             <h1 className="text-3xl font-semibold">Estoque</h1>
 
-            <div className="space-x-2">
-               <Button variant="secondary" className="text-base w-min" onClick={() => setIsAddMaterialDialogOpen(true)}>Cadastrar material</Button>
-            </div>
+               {/* <div className="space-x-2">
+                  <Button variant="secondary" className="text-base w-min" onClick={() => setIsAddMaterialDialogOpen(true)}>Cadastrar material</Button>
+               </div> */}
          </div>
 
          <section className="border-2 border-slate-200 dark:border-slate-900 p-3 rounded-lg">
