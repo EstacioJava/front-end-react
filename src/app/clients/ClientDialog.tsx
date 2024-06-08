@@ -1,9 +1,8 @@
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { DialogHeader, DialogFooter } from "@/components/ui/dialog"
 import { Client, Order } from "@/lib/types"
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@radix-ui/react-accordion"
-import { Dialog, DialogContent, DialogTitle } from "@radix-ui/react-dialog"
+import { DialogHeader, DialogFooter, Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion"
 import Link from "next/link"
 import { Dispatch, SetStateAction } from "react"
 
@@ -47,7 +46,7 @@ export default function ClientDialog ({ client, orders, setIsClientDataDialogOpe
                      { orders.map(order => {
                         if (order.clientID.toString() === client.id) {
                            return (
-                              <AccordionItem value={ order.id.toString() }>
+                              <AccordionItem value={ order.id.toString() } key={order.id}>
                                  <AccordionTrigger className="w-full hover:bg-neutral-100 hover:no-underline text-lg capitalize px-2 py-3">
                                     <div className="flex flex-row">
                                        <div className="flex flex-row justify-end w-[9rem] mr-3">

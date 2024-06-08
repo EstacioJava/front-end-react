@@ -1,8 +1,8 @@
 'use client'
 
 // import type { Metadata } from "next";
-import { ThemeProvider } from "@/components/theme-provider"
 import "./globals.css";
+import { ThemeProvider } from "@/components/theme-provider"
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -25,7 +25,7 @@ export default function RootLayout({
   }
 
   return (
-    <html lang="en">
+    <html suppressHydrationWarning lang="en">
       <body>
         <ThemeProvider
           attribute="class"

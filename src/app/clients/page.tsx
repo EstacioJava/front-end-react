@@ -82,7 +82,7 @@ export default function ClientsPanel (tab: string) {
             <h2 className="text-2xl font-semibold">Clientes</h2>
 
             <div className="grid grid-cols-3 grid-rows-[auto] gap-4 mt-3">
-               <ClientsCards clients={clients} orders={orders} />
+               { clients.map(client => <ClientsCards client={client} orders={orders} />) }
             </div>
          </section>
 
