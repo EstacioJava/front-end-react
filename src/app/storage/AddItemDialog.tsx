@@ -53,7 +53,7 @@ export function AddItemDialog (props: AddItemDialogProps) {
    }
    
    return (
-      <Dialog open={props.isDialogOpen}>
+      <Dialog onOpenChange={(v) => props.setIsDialogOpen(v)} open={props.isDialogOpen}>
          <DialogContent
             className="sm:max-w-[50rem]"
             onEscapeKeyDown={() => props.setIsDialogOpen(false)}

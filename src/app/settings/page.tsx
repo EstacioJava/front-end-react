@@ -1,3 +1,5 @@
+'use client'
+
 import { Label } from "@/components/ui/label"
 import { Switch } from "@/components/ui/switch"
 import { useTheme } from "next-themes"
@@ -22,7 +24,7 @@ export default function SettingsPanel () {
             <h1 className="text-3xl font-semibold">Configurações</h1>
 
             <Label htmlFor="toggle_theme_switch" />
-            <Switch id="toggle_theme_switch" checked={checked.value} onCheckedChange={toggleTheme} />
+            <Switch id="toggle_theme_switch" checked={checked} onCheckedChange={toggleTheme} />
          </div>
       </section>
    )

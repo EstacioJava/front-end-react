@@ -1,3 +1,5 @@
+'use client'
+
 import { Item } from "@/lib/types";
 import { Button } from "@/components/ui/button";
 import {
@@ -25,7 +27,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { DeleteItemAlertDialog } from "./DeleteItemAlertDialog";
 
-export default function StoragePanel() {
+export default function Storage() {
    const [errorOnFetchingStorage, setErrorOnFetchingStorage] = useState(false);
    const [isAddItemDialogOpen, setIsAddItemDialogOpen] = useState(false);
    const [storage, setStorage] = useState([]);

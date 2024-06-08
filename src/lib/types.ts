@@ -13,23 +13,23 @@ export interface DashboardData {
    monthly_costs: Array<{ month: string, cost: number }>;
 }
 
+export interface Order {
+   id: number;
+   clientID: number;
+   status: string;
+   description: string;
+   orderDate: string;
+   deliveryDate: string;
+   materials: string;
+   finalPrice: number;
+}
+
 export interface Client {
+   id: string;
    name: string;
-   address: {
-      street: string;
-      number: number | string;
-      neiborghood: string;
-      city: string;
-      state: string;
-      type: 'house' | 'apartment' | 'building';
-      postal_code: string;
-   },
-   contact: {
-      phone: string;
-      email: string;
-   },
-   id: {
-      type: 'cpf' | 'cnpj';
-      value: string;
-   }
+   cpf: string;
+   email: string;
+   phone: string;
+   address: string;
+   orders: Array<Order>;
 }

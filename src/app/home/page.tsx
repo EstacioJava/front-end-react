@@ -1,3 +1,5 @@
+'use client'
+
 import { Skeleton } from "@/components/ui/skeleton";
 import { DashboardData } from "@/lib/types";
 import { useEffect, useState } from "react"
