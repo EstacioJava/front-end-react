@@ -10,8 +10,9 @@ import { useToast } from "@/components/ui/use-toast";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import './style.css';
-import { TooltipProvider, Tooltip, TooltipTrigger, TooltipContent } from "@radix-ui/react-tooltip";
 import NewClientDialog from "./NewClientDialog";
+import ClientCard from "./ClientCard";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 export default function ClientsPanel (tab: string) {
    const [clients, setClients] = useState<Array<Client>>([]);
@@ -195,7 +196,7 @@ export default function ClientsPanel (tab: string) {
    return (
       <section className="flex flex-col h-full w-full rounded-lg shadow-lg bg-slate-50 p-5 space-y-4">
          <div className="flex flex-row justify-between">
-            <h1 className="text-3xl font-semibold">Início</h1>
+            <h1 className="text-3xl font-semibold">Clientes</h1>
          </div>
 
          <section className="border-2 border-slate-200 dark:border-slate-900 p-3 rounded-lg">
@@ -206,8 +207,25 @@ export default function ClientsPanel (tab: string) {
                </Button>
             </div>
 
+            <Popover>
+               <PopoverTrigger>Open</PopoverTrigger>
+               <PopoverContent align="start" className="max-w-[12rem] max-h-[8rem] overflow-x-auto p-0">
+                  <Button size="sm" variant="ghost" className="w-full justify-start">A</Button>
+                  <Button size="sm" variant="ghost" className="w-full justify-start">A</Button>
+                  <Button size="sm" variant="ghost" className="w-full justify-start">A</Button>
+                  <Button size="sm" variant="ghost" className="w-full justify-start">A</Button>
+                  <Button size="sm" variant="ghost" className="w-full justify-start">A</Button>
+                  <Button size="sm" variant="ghost" className="w-full justify-start">A</Button>
+                  <Button size="sm" variant="ghost" className="w-full justify-start">A</Button>
+                  <Button size="sm" variant="ghost" className="w-full justify-start">A</Button>
+                  <Button size="sm" variant="ghost" className="w-full justify-start">A</Button>
+                  <Button size="sm" variant="ghost" className="w-full justify-start">A</Button>
+                  <Button size="sm" variant="ghost" className="w-full justify-start">A</Button>
+               </PopoverContent>
+            </Popover>
+
             <div className="grid grid-cols-3 grid-rows-[auto] gap-4 mt-3">
-               <ClientsCards />
+               { clients.map(client => <ClientCard client={client} orders={orders} key={client.id} />) }
             </div>
          </section>
          {/* <ClientDataDialog client={clientDialogData} /> */}

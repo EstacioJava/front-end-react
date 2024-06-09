@@ -1,8 +1,8 @@
 'use client'
 
 // import type { Metadata } from "next";
-import { ThemeProvider } from "@/components/theme-provider"
 import "./globals.css";
+import { ThemeProvider } from "@/components/theme-provider"
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -21,11 +21,12 @@ export default function RootLayout({
   const [activeTab, setActiveTab] = useState('home');
 
   function changeTab (tabName: 'home' | 'storage' | 'settings' | 'clients') {
+    setActiveTab(tabName);
     router.push(tabName);
   }
 
   return (
-    <html lang="en">
+    <html suppressHydrationWarning lang="en">
       <body>
         <ThemeProvider
           attribute="class"
