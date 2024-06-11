@@ -9,8 +9,6 @@ interface ClientCardProps extends React.HTMLAttributes<HTMLElement> {
    orders: Array<Order>;
 }
 
-// test
-
 const ClientCard = ({ client, orders }: ClientCardProps) => {
    const [isClientDataDialogOpen, setIsClientDataDialogOpen] = useState(false);
 

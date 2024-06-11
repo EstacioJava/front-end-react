@@ -13,7 +13,7 @@ export interface DashboardData {
    monthly_costs: Array<{ month: string, cost: number }>;
 }
 
-export interface Order {
+export interface OrderType {
    id: number;
    clientID: number;
    status: string;

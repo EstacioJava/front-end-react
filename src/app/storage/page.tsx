@@ -161,14 +161,16 @@ export default function Storage() {
       <section className="flex flex-col h-full w-full rounded-lg shadow-lg p-5 bg-slate-50 dark:bg-slate-900">
          <div className="flex flex-row justify-between mb-4">
             <h1 className="text-3xl font-semibold">Estoque</h1>
-
-               {/* <div className="space-x-2">
-                  <Button variant="secondary" className="text-base w-min" onClick={() => setIsAddMaterialDialogOpen(true)}>Cadastrar material</Button>
-               </div> */}
          </div>
 
          <section className="border-2 border-slate-200 dark:border-slate-900 p-3 rounded-lg">
-            <h2 className="text-2xl font-semibold">Itens</h2>
+            <div className="flex flex-row justify-between">
+               <h2 className="text-2xl font-semibold">Itens</h2>
+               
+               <Button onClick={() => setIsAddItemDialogOpen(true)} size="icon" variant="ghost">
+                  <i className="ti ti-square-rounded-plus text-2xl"></i>
+               </Button>
+            </div>
 
             <Table className="text-base">
                <TableHeader>
@@ -187,7 +189,12 @@ export default function Storage() {
                </TableBody>
                <TableFooter>
                   <TableRow>
-                     <TableCell>Total: $2,500.00</TableCell>
+                     {
+                        storage.length > 1 
+                        ? <TableCell>Total: { new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(storage.reduce((a,b) => a.price + b.price))  }</TableCell>
+                        : storage.length > 0 && <TableCell>Total: { new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(storage[0].price)  }</TableCell>
+                     }
+                     {/* <TableCell>Total: { storage.reduce((a, b) => a.price + b.price) }</TableCell> */}
                   </TableRow>
                </TableFooter>
                <TableCaption className="text-base">Todos os materiais em estoque</TableCaption>
@@ -197,7 +204,7 @@ export default function Storage() {
             <AddMaterialDialog isDialogOpen={isAddMaterialDialogOpen} setIsDialogOpen={setIsAddMaterialDialogOpen}/>
             <DeleteItemAlertDialog itemID={deleteItemID} getStorageItems={getStorageItems} setIsDialogOpen={setIsDeleteItemAlertDialogOpen} isDialogOpen={isDeleteItemAlertDialogOpen} />
 
-            <Button variant="secondary" className="text-base w-min" onClick={() => setIsAddItemDialogOpen(true)}>Cadastrar item</Button>
+            {/* <Button variant="secondary" className="text-base w-min" onClick={() => setIsAddItemDialogOpen(true)}>Cadastrar item</Button> */}
          </section>
       </section>
    )

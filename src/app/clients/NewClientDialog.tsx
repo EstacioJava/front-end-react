@@ -1,10 +1,8 @@
-import Combobox from "@/components/combobox";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTitle, DialogHeader, DialogFooter } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { cn } from "@/lib/utils";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
@@ -111,6 +109,7 @@ export default function NewClientDialog({ isAddClientDialogOpen, setIsAddClientD
       .then(response => response.json())
       .then(data => {
          console.log('New client', data);
+         window.location.reload();
       })
    }
 

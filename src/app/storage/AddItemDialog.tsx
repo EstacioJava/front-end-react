@@ -75,20 +75,11 @@ export function AddItemDialog (props: AddItemDialogProps) {
                         <SelectValue className="text-base" placeholder="Selecione um material" />
                      </SelectTrigger>
                      <SelectContent>
-                        <SelectGroup>
-                           <SelectLabel>Madeiras</SelectLabel>
-                           <SelectItem value="MDF 3mm">MDF 3mm</SelectItem>
-                           <SelectItem value="MDF 6mm">MDF 6mm</SelectItem>
-                           <SelectItem value="MDF 8mm">MDF 8mm</SelectItem>
-                           <SelectItem value="MDF 10mm">MDF 10mm</SelectItem>
-                           <SelectItem value="MDF 18mm">MDF 18mm</SelectItem>
-                        </SelectGroup>
-                        
-                        <SelectGroup>
-                           <SelectLabel>Outros</SelectLabel>
-                           <SelectItem value="cola_contato_3.6L">Cola contato 3,6 L</SelectItem>
-                           <SelectItem value="corredica_light">Corrediça Light</SelectItem>
-                        </SelectGroup>
+                        <SelectItem value="MDF 3mm">MDF 3mm</SelectItem>
+                        <SelectItem value="MDF 6mm">MDF 6mm</SelectItem>
+                        <SelectItem value="MDF 8mm">MDF 8mm</SelectItem>
+                        <SelectItem value="MDF 10mm">MDF 10mm</SelectItem>
+                        <SelectItem value="MDF 18mm">MDF 18mm</SelectItem>
                      </SelectContent>
                   </Select>
                </div>
